@@ -31,6 +31,7 @@
       </div>
       <div class="espaço-abaixo"></div>
       <button>SALVAR</button>
+      <button>SALVAR</button>
     </form>
   </div>
 </template>
