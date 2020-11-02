@@ -2,8 +2,8 @@
   <div class="cadastro">
     <h3>Formulario</h3>
     <form action="">
-      <div>
-        <Label for="name">Nome do CLiente</Label>
+      <div class="input">
+        <Label for="name">Nome do cliente </Label>
         <input id="name" type="text" placeholder="Nome" />
       </div>
       <div class="espaço-abaixo"></div>
@@ -13,6 +13,7 @@
           <option value=""></option>
         </select>
       </div>
+      <div>teste</div>
     </form>
   </div>
 </template>
@@ -22,12 +23,13 @@ export default {};
 </script>
 
 <style lang="scss">
-input[type="text"] {
+input[type='text'] {
   padding: 10px;
   background-color: white;
   color: black;
   border-radius: 10px;
   border: 1px solid grey;
+  width: 200px;
 }
 .espaço-abaixo {
   padding-top: 10px;
@@ -35,6 +37,8 @@ input[type="text"] {
 .cadastro {
   border: 1px solid grey;
   border-radius: 5px;
+}
+.input {
 }
 </style>
 px
