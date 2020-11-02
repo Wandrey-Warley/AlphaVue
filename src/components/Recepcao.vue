@@ -2,24 +2,63 @@
   <div class="cadastro">
     <h3>Formulario</h3>
     <form action="">
-      <div class="input">
+      <div class="Name">
         <Label for="name">Nome do cliente </Label>
         <input id="name" type="text" placeholder="Nome" />
       </div>
       <div class="espaço-abaixo"></div>
       <div>
-        <label for="">Raça do cachorro</label>
-        <select name="" id="">
-          <option value=""></option>
+        <label for="racas">Raça do cachorro</label>
+        <select name="" id="racas">
+          <option value="" v-for="(raca, index) in racas" :key="index">{{
+            raca.nome
+          }}</option>
         </select>
       </div>
-      <div>teste</div>
+      <div class="espaço-abaixo"></div>
+      <div class="Age">
+        <Label for="name">Idade </Label>
+        <input id="name" type="number" placeholder="Idade" />
+      </div>
+      <div class="espaço-abaixo"></div>
+      <div>
+        <label for="servicos">Serviço</label>
+        <select name="" id="servicos">
+          <option value="" v-for="(servicos, index) in servicos" :key="index"
+            >{{ servicos.nome }} ({{ servicos.preco | grana }})</option
+          >
+        </select>
+      </div>
+      <div class="espaço-abaixo"></div>
+      <button>SALVAR</button>
     </form>
   </div>
 </template>
 
 <script>
-export default {};
+import axios from 'axios';
+export default {
+  data() {
+    return {
+      racas: [],
+      servicos: [],
+    };
+  },
+  async created() {
+    this.racas = await this.buscarRacas();
+    this.servicos = await this.buscarServicos();
+  },
+  methods: {
+    async buscarRacas() {
+      const { data } = await axios.get('http://localhost:3000/racas');
+      return data;
+    },
+    async buscarServicos() {
+      const { data } = await axios.get('http://localhost:3000/servicos');
+      return data;
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -37,8 +76,7 @@ input[type='text'] {
 .cadastro {
   border: 1px solid grey;
   border-radius: 5px;
-}
-.input {
+  width: 50%;
 }
 </style>
 px
